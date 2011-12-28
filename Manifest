@@ -1,0 +1,6 @@
+CHANGELOG
+Manifest
+Rakefile
+generic_factory_steps.gemspec
+lib/generic_factory_steps.rb
+lib/generic_factory_steps/generic_service_object_steps.rb
