@@ -6,7 +6,7 @@ Given /^a(|n) (.*) exists with attributes$/ do |plural, object, table|
 end
 
 Then /^the (.*) (.*) should have$/ do |position, model_name, table|
-  object = model_name.classify.constantize.order(:id).send(position)
+  object = model_name.classify.constantize.send(position)
   table.hashes.each do |param|
     compare_value(object, param)
   end
