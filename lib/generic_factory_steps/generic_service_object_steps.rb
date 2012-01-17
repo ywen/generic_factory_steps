@@ -1,8 +1,6 @@
-Given /^a(|n) (.*) exists with attributes$/ do |plural, object, table|
+Given /^a(|n) (.*) exists with attributes$/ do |plural, factory_name, table|
   params = prepare_params_from_table(table.hashes)
-  factory, label = *parse_model(object)
-  record = Factory.create factory.to_sym, params
-  store_model(factory, label, record)
+  record = Factory.create factory_name.to_sym, params
 end
 
 Then /^the (.*) (.*) should have$/ do |position, model_name, table|
