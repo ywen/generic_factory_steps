@@ -1,6 +1,7 @@
-Given /^a(|n) (.*) exists with attributes$/ do |plural, factory_name, table|
+Given /^a(|n) (.*) exists with attributes and saved as (.*)$/ do |plural, factory_name, variable_name, table|
   params = prepare_params_from_table(table.hashes)
   record = Factory.create factory_name.to_sym, params
+  instance_variable_set("@#{variable_name}", record)
 end
 
 Then /^the (.*) (.*) should have$/ do |position, model_name, table|
