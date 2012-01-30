@@ -68,7 +68,9 @@ def compare_value(object, param)
   expectation_value = prepare_value(param)
   actual_value = object.send(param["field_name"])
   if expectation_value.is_a?(Float)
-    actual_value.should be_close(expectation_value, 1e-8)
+    actual_value.should be_within(1e-8).of(expectation_value)
+  elsif expectation_value.is_a?(Time)
+    actual_value.should be_within(6).of(expectation_value)
   elsif param["type"] == "inclusion"
     actual_value.should include(expectation_value)
   else
