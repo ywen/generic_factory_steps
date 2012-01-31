@@ -17,10 +17,9 @@ Then /^the (.*) should have attributes$/ do |model_name, table|
   end
 end
 
-Then /^(\d+) "(.*)" objects "(.*)" should be created$/ do |number, service, object|
-  service_module = "#{service.gsub(" ", "_").classify}Objects"
+Then /^(\d+) "(.*)" objects should be created$/ do |number, object|
   klass = object.singularize.classify
-  "#{service_module}::#{klass}".constantize.count.should == number.to_i
+  klass.constantize.count.should == number.to_i
 end
 
 Then /^I should receive an error with response$/ do |table|
